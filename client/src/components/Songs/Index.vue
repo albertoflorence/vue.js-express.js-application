@@ -12,6 +12,7 @@
 import Panel from '@/components/Panel'
 import SongsService from '@/services/SongsService'
 import SongsPanel from './SongsPanel'
+import SongsSearch from './SongsSearch'
 export default {
   data () {
     return {
@@ -28,7 +29,8 @@ export default {
   },
   components: {
     Panel,
-    SongsPanel
+    SongsPanel,
+    SongsSearch
   }
 }
 </script>

@@ -44,9 +44,9 @@
           </v-btn>
         </v-flex>
         <v-flex xs6>
-          <img 
+          <img
             class='album-image'
-            :src="song.albumImageUrl">
+            :src="song.albumImageUrl"/>
         </v-flex>
       </v-layout>
     </div>
@@ -59,11 +59,13 @@ import SongsService from '@/services/SongsService'
 export default {
   data () {
     return {
-      songs: []
+      songs: null
     }
   },
   async mounted () {
-    this.songs = (await SongsService.index()).data
+    if (this.songs) {
+      this.songs = (await SongsService.index()).data
+    }
   },
   methods: {
     navigateTo (route) {
@@ -72,6 +74,14 @@ export default {
   },
   components: {
     Panel
+  },
+  watch: {
+    '$route.query.search': {
+      immediate: true,
+      async handler (value) {
+        this.songs = (await SongsService.index(value)).data
+      }
+    }
   }
 }
 </script>
@@ -92,6 +102,7 @@ export default {
   font-size: 18px;
 }
 .album-image {
-  width: 50%;
+  width: 300px;
+  height: 150px;
 }
 </style>

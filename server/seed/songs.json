@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Lose Yourself",
+    "artist": "Eminem",
+    "genre": "Rap",
+    "album": "8 Mile",
+    "albumImageUrl": "http://resizing.flixster.com/8uaXDBtTMHwSovWb9bauvk2-CQ0=/800x1200/v1.bTsxMTE4MDY2ODtqOzE3NTEyOzIwNDg7ODAwOzEyMDA",
+    "youtubeId": "HdV2sXi8v5E",
+    "tab": "tab",
+    "lyrics": "lyrics"
+  },
+  {
+    "title": "Thunder",
+    "artist": "Imagine Dragons",
+    "genre": "Alternative Rock",
+    "album": "Evolve",
+    "albumImageUrl": "https://i.redditmedia.com/UP__lTXiYrKIDWHykHlROXCFNyX9C7i_VCdHZxZqS6U.png?w=1024&s=a12291356b55091f8139a91f7a9a8433",
+    "youtubeId": "fKopy74weus",
+    "tab": "tab",
+    "lyrics": "lyrics"
+  },
+  {
+    "title": "Believer",
+    "artist": "Imagine Dragons",
+    "genre": "Alternative Rock",
+    "album": "Evolve",
+    "albumImageUrl": "https://i.redditmedia.com/UP__lTXiYrKIDWHykHlROXCFNyX9C7i_VCdHZxZqS6U.png?w=1024&s=a12291356b55091f8139a91f7a9a8433",
+    "youtubeId": "7wtfhZwyrcc",
+    "tab": "tab",
+    "lyrics": "lyrics"
+  },
+  {
+    "title": "R U Mine?",
+    "artist": "Arctic Monkeys",
+    "genre": "Alternative Rock",
+    "album": "AM",
+    "albumImageUrl": "http://arcticmonkeysbr.com/wp-content/uploads/2014/10/maxresdefault1.jpg",
+    "youtubeId": "VQH8ZTgna3Q",
+    "tab": "tab",
+    "lyrics": "lyrics"
+  }
+]

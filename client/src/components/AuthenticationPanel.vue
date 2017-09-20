@@ -15,7 +15,7 @@
               v-model="password"
             ></v-text-field>
             <br>
-            <div class="error" v-html="error"/>
+            <div class="red--text" v-html="error"/>
             <br>
             <v-btn class="cyan" 
               dark
@@ -50,6 +50,9 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'songs'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }

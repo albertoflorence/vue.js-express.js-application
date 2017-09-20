@@ -1,31 +1,35 @@
 <template>
 	<v-toolbar fixed class="cyan" dark>
 		<v-toolbar-title class="mr-4">
-			<span 
+			<router-link 
         class="home"
-        @click="navigateTo({name: 'root'})"> 
+        tag="span"
+        :to="{
+          name: 'root'
+        }"> 
         TabTracker 
-      </span>
+      </router-link>
 		</v-toolbar-title>
 		<v-toolbar-items> 
 			<v-btn
         flat dark
-        @click="navigateTo({name: 'songs'})">
+        :to="{name: 'songs'}">
         Browse
       </v-btn>
 		</v-toolbar-items>
+    <songs-search class="search" />
 		<v-spacer></v-spacer>		
 		<v-toolbar-items>
       <v-btn
         v-if="!$store.state.isUserLoggedIn" 
         flat dark
-        @click="navigateTo({name: 'login'})">
+        :to="{name: 'login'}">
         Login
       </v-btn>
 			<v-btn
         v-if="!$store.state.isUserLoggedIn"  
   			flat dark
-  			@click="navigateTo({name: 'register'})">
+  			:to="{name: 'register'}">
 				Sign Up
 			</v-btn>
       <v-btn
@@ -39,11 +43,9 @@
 </template>
 
 <script>
+import SongsSearch from '@/components/Songs/SongsSearch'
 export default {
   methods: {
-    navigateTo (route) {
-      this.$router.push(route)
-    },
     logout () {
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
@@ -51,6 +53,9 @@ export default {
         name: 'root'
       })
     }
+  },
+  components: {
+    SongsSearch
   }
 }
 </script>
@@ -63,5 +68,7 @@ export default {
 .home:hover {
   color: #AD3;
 }
-
+.search {
+  margin-left: 100px;
+}
 </style>
