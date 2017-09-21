@@ -13,14 +13,16 @@ const Promise = require('bluebird')
 sequelize.sync({force: true})
   .then(async function () {
     await Promise.all([
-      songs.forEach(song => {
+      songs.map(song => {
          Song.create(song)
       }), 
-      users.forEach(user => {
+      users.map(user => {
          User.create(user)
-      }),
-      bookmarks.forEach(bookmark => {
-         Bookmark.create(bookmark)
       })
     ])
+    await Promise.all(
+      bookmarks.map(bookmark => {
+        Bookmark.create(bookmark)
+      })
+    )
   })

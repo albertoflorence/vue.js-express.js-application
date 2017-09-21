@@ -27,6 +27,22 @@
             }
           }">edit
         </v-btn>
+        <v-btn 
+          v-if="isUserLoggedIn && !bookmark" 
+          dark
+          class="cyan"
+          small
+          @click="setBookmark"
+        >Bookmark
+        </v-btn>
+        <v-btn
+          v-if="isUserLoggedIn && bookmark"
+          dark
+          class="cyan"
+          small
+          @click="unsetBookmark"
+        >UnBookmark
+        </v-btn>
       </v-flex>
       <v-flex xs6>
         <img 
@@ -43,13 +59,58 @@
 
 <script>
 import Panel from '@/components/Panel'
+import {mapState} from 'vuex'
+import BookmarksService from '@/services/BookmarksService'
 export default {
+  computed: {
+    ...mapState([
+      'isUserLoggedIn',
+      'user'
+    ])
+  },
+  data () {
+    return {
+      bookmark: null
+    }
+  },
   props: [
     'song'
   ],
   components: {
     Panel
+  },
+  methods: {
+    async setBookmark () {
+      try {
+        this.bookmark = (await BookmarksService.post({
+          songId: this.song.id,
+          userId: this.user.id
+        })).data
+      } catch (err) {
+        console.log(err)
+      }
+    },
+    async unsetBookmark () {
+      try {
+        await BookmarksService.delete(this.bookmark.id)
+        this.bookmark = null
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  },
+  async mounted () {
+    if (!this.isUserLoggedIn) {
+      return
+    }
+    const songId = this.$store.state.route.params.songId
+    const bookmark = (await BookmarksService.index({
+      songId: songId,
+      userId: this.user.id
+    })).data
+    this.bookmark = bookmark
   }
+
 }
 </script>
 
