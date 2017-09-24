@@ -12,7 +12,7 @@ module.exports = {
 			storage: path.resolve(__dirname, '../../tabtracker.sqlite') 
 		}
 	},
-	authentification: {
+	authentication: {
 		jwtSecret: process.env.JWT_SECRET || 'secret'
 	}
 }

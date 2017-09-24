@@ -58,14 +58,12 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import {mapState} from 'vuex'
 import BookmarksService from '@/services/BookmarksService'
 export default {
   computed: {
     ...mapState([
-      'isUserLoggedIn',
-      'user'
+      'isUserLoggedIn'
     ])
   },
   data () {
@@ -76,15 +74,11 @@ export default {
   props: [
     'song'
   ],
-  components: {
-    Panel
-  },
   methods: {
     async setBookmark () {
       try {
         this.bookmark = (await BookmarksService.post({
-          songId: this.song.id,
-          userId: this.user.id
+          songId: this.song.id
         })).data
       } catch (err) {
         console.log(err)
@@ -105,10 +99,9 @@ export default {
     }
     const songId = this.$store.state.route.params.songId
     const bookmark = (await BookmarksService.index({
-      songId: songId,
-      userId: this.user.id
+      songId: songId
     })).data
-    this.bookmark = bookmark
+    this.bookmark = bookmark[0]
   }
 
 }

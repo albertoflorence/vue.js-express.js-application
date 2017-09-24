@@ -70,7 +70,6 @@
 </template>
 
 <script>
-import Panel from '@/components/Panel'
 import SongsService from '@/services/SongsService'
 export default {
   data () {
@@ -111,9 +110,6 @@ export default {
     const songId = this.$store.state.route.params.songId
     const song = (await SongsService.show(songId)).data
     this.song = song
-  },
-  components: {
-    Panel
   }
 }
 </script>
